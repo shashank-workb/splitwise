@@ -49,3 +49,5 @@ The R of group shows who-owes-who in group, and R of user shows who-owes-who in 
 
 
 ## API COLLECTION
+
+https://www.getpostman.com/collections/0edd1732f0a2b0257b9e
