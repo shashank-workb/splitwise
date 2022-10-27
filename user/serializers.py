@@ -63,8 +63,8 @@ class GroupSerializer(serializers.ModelSerializer):
             remove_group_from_users = [user for user in instance.Users if user not in usernames]
             if not GroupSerializer.can_be_deleted(instance, remove_group_from_users):
                 raise serializers.ValidationError(f'Users {str(remove_group_from_users)} cant be deleted as payment not settled')
-            self.remove_groups_from_users(remove_group_from_users, validated_data['Title'])
-            self.add_groups_to_users(usernames, validated_data['Title'])
+            self.remove_groups_from_users(remove_group_from_users, instance.Title)
+            self.add_groups_to_users(usernames, instance.Title)
         
         return super().update(instance, validated_data)
 
