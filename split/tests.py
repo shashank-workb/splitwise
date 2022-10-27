@@ -135,4 +135,29 @@ class SplitAppTestCase(SplitwiseTestCaseBase):
             self.client.post(self.split_URL, payload, format="json")
         self.cross_check_global_groups()
     
+    def test_delete_expense(self):
+        attempts = randint(3, 11)
+        for _ in range(attempts):
+
+            amount = len(self.users) * randint(1, 11)
+            details = {'Payer': choice(self.users)}
+
+            # Randomize further to have unequal distribution
+            for each in self.users:
+                details[each] = amount // len(self.users)
+
+            payload = {
+            "Group": self.title,
+            "Title": self.create_random_text(),
+            "Amount": amount,
+            "Details": details,
+            }
+            self.client.post(self.split_URL, payload, format="json")
+
+        all_expense = Expense.objects.all()
+        for obj in all_expense:
+            self.client.delete(self.split_URL+f'{obj.id}/')
+
+        for key, val in Group.objects.get(Title='match1').PayMap.items():
+            self.assertEqual(val, 0)
 

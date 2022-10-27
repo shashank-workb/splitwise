@@ -4,6 +4,10 @@ from user.models import User, Group
 class UserSerializer(serializers.ModelSerializer):
     Groups = serializers.ListField(child=serializers.CharField(), default=[], required=False)
 
+    def update(self, instance, validated_data):
+        if validated_data['Name']:
+            raise serializers.ValidationError('Cant Delete User')
+
     class Meta:
         model = User
         fields = ('Name', 'Groups', 'Balance')
