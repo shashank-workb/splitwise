@@ -1,7 +1,7 @@
 # splitwise
 Backend Clone of famous Splitwise App
 
-## Local Setup
+## LOCAL SETUP
 
 1. Install python = 3.9.13
 
@@ -37,7 +37,7 @@ Backend Clone of famous Splitwise App
 
 
 
-Features
+## FEATURES
 
 C-Create, R-Read, U-Update, D-Delete
 
@@ -48,4 +48,4 @@ The R of group shows who-owes-who in group, and R of user shows who-owes-who in 
 3. CRUD Expense (Rebalance on the group and global level)
 
 
-## API Collection
+## API COLLECTION
